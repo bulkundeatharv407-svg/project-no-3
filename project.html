@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Food Stop | Best Cafe & Restaurant Franchise India</title>
+  <!-- Google Fonts & Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- QR Code Generator Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Swiper for carousel -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fffaf5;
+      color: #2c2c2c;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4, .logo, .hero-title, .section-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Header with background image */
+    header {
+      background: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&auto=format') center/cover no-repeat;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 14px 0;
+      backdrop-filter: blur(8px);
+      background-blend-mode: overlay;
+      background-color: rgba(0,0,0,0.3);
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.3);
+      z-index: 0;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: white;
+      cursor: pointer;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    .logo i {
+      font-size: 2rem;
+      color: #ffd7ae;
+    }
+    .logo span { font-weight: 400; color: #ffd7ae; }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: white;
+      transition: 0.2s;
+      font-size: 0.9rem;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .nav-links a:hover { color: #ffd7ae; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .phone-link {
+      font-weight: 700;
+      background: #c25e2c;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 40px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .phone-link:hover {
+      background: #9b451b;
+      transform: scale(0.98);
+    }
+    .btn-franchise {
+      background: #c25e2c;
+      color: white;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.2s;
+    }
+    .btn-franchise:hover { background: #9b451b; transform: scale(0.97); }
+
+    section {
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+      padding: 80px 0;
+    }
+    #home {
+      background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&auto=format');
+      animation: slowZoom 20s infinite alternate ease-in-out;
+    }
+    #home::before, section:not(#home)::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+    #about, #menu, #franchise, #news, #faq, #contact {
+      background-attachment: fixed;
+    }
+    #about { background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&auto=format'); animation: slowPan 25s infinite alternate; }
+    #menu { background-image: url('https://images.unsplash.com/photo-1507133750040-4c8f570a7114?w=1600&auto=format'); animation: slowZoom 22s infinite alternate; }
+    #franchise { background-image: url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1600&auto=format'); animation: slowPan 28s infinite alternate; }
+    #news { background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&auto=format'); animation: slowZoom 24s infinite alternate; }
+    #faq { background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?w=1600&auto=format'); animation: slowPan 26s infinite alternate; }
+    #contact { background-image: url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=1600&auto=format'); animation: slowZoom 20s infinite alternate; }
+
+    @keyframes slowZoom {
+      0% { background-size: 100%; background-position: center; }
+      100% { background-size: 115%; background-position: 30% 20%; }
+    }
+    @keyframes slowPan {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .hero {
+      text-align: center;
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-title { font-size: 3.8rem; text-shadow: 2px 2px 12px rgba(0,0,0,0.3); }
+    .hero p { font-size: 1.2rem; max-width: 700px; margin: 20px auto; }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 40px;
+    }
+    .hero-stats div {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      padding: 12px 24px;
+      border-radius: 60px;
+    }
+    .hero-stats h3 { font-size: 2rem; color: #ffcf9a; }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      position: relative;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: #ffd7ae;
+      margin: 14px auto 0;
+      border-radius: 4px;
+    }
+    .sub-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin: 40px 0 20px;
+      color: #fef0df;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    }
+    .section-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+    .rotating-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255,245,235,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rotating-icon img { width: 50px; }
+
+    /* Enhanced Franchise Section */
+    .franchise-modern {
+      background: rgba(255, 248, 240, 0.96);
+      backdrop-filter: blur(8px);
+      border-radius: 60px;
+      padding: 50px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .franchise-split {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+    .franchise-left {
+      flex: 1;
+      text-align: left;
+    }
+    .franchise-left h3 {
+      font-size: 2.2rem;
+      color: #c25e2c;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+    .franchise-left p {
+      font-size: 1rem;
+      color: #4a3a2e;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .franchise-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: white;
+      padding: 8px 20px;
+      border-radius: 50px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .feature-item i {
+      color: #c25e2c;
+      font-size: 1.1rem;
+    }
+    .franchise-right {
+      flex: 1;
+      background: white;
+      padding: 35px;
+      border-radius: 48px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .franchise-right input, .franchise-right select {
+      width: 100%;
+      padding: 14px 18px;
+      margin: 10px 0;
+      border-radius: 60px;
+      border: 1px solid #e0d6cc;
+      font-family: 'Inter', sans-serif;
+      transition: 0.2s;
+    }
+    .franchise-right input:focus, .franchise-right select:focus {
+      outline: none;
+      border-color: #c25e2c;
+      box-shadow: 0 0 0 3px rgba(194,94,44,0.1);
+    }
+    .franchise-right button {
+      margin-top: 15px;
+      width: 100%;
+    }
+    .btn-franchise-large {
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    @media (max-width: 780px) {
+      .franchise-split { flex-direction: column; }
+      .franchise-left { text-align: center; }
+      .franchise-features { justify-content: center; }
+    }
+
+    /* Menu Carousel Styles */
+    .menu-carousel {
+      position: relative;
+      margin-bottom: 60px;
+    }
+    .swiper {
+      padding: 20px 0 40px;
+    }
+    .swiper-slide {
+      display: flex;
+      justify-content: center;
+    }
+    .menu-card-carousel {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 320px;
+      transition: 0.3s;
+      text-align: center;
+      padding-bottom: 1.5rem;
+    }
+    .menu-card-carousel:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.3);
+    }
+    .menu-card-carousel img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+    .menu-card-carousel h4 {
+      font-size: 1.3rem;
+      margin: 1rem 0 0.5rem;
+      color: #3e2a21;
+    }
+    .menu-card-carousel .price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #c25e2c;
+      display: inline-block;
+      background: #fef3e8;
+      padding: 4px 16px;
+      border-radius: 40px;
+    }
+    .swiper-button-next, .swiper-button-prev {
+      color: #c25e2c;
+      background: rgba(255,255,255,0.8);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      backdrop-filter: blur(4px);
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .swiper-pagination-bullet-active {
+      background: #c25e2c;
+    }
+
+    /* Other sections */
+    .news-grid, .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-bottom: 40px;
+    }
+    .news-card, .faq-item {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px -12px rgba(0,0,0,0.2);
+      text-align: center;
+      padding: 1.5rem;
+      transition: 0.3s;
+    }
+    .news-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    .contact-enhanced {
+      display: flex;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: 0 25px 45px -12px rgba(0,0,0,0.3);
+    }
+    .contact-info-modern {
+      flex: 1;
+      padding: 48px 40px;
+      background: white;
+    }
+    .contact-info-modern h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: #c25e2c;
+      margin-bottom: 20px;
+    }
+    .contact-details p {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 18px 0;
+      font-size: 1.1rem;
+      color: #3e2a21;
+    }
+    .contact-details i {
+      width: 40px;
+      height: 40px;
+      background: #fef3e8;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #c25e2c;
+    }
+    .social-links {
+      margin: 30px 0;
+      display: flex;
+      gap: 20px;
+    }
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      background: #f5e9df;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #c25e2c;
+      font-size: 1.3rem;
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      background: #c25e2c;
+      color: white;
+    }
+    .contact-cta {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    .contact-cta .btn-outline {
+      background: transparent;
+      border: 2px solid #c25e2c;
+      color: #c25e2c;
+      padding: 10px 25px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .contact-cta .btn-outline:hover {
+      background: #c25e2c;
+      color: white;
+    }
+    .contact-image-modern {
+      flex: 1;
+      min-height: 500px;
+      background: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&auto=format') center/cover;
+    }
+    footer {
+      background: #1e1712;
+      color: #d9c7b2;
+      padding: 50px 0;
+      text-align: center;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .qr-floating-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 64px;
+      height: 64px;
+      background: #c25e2c;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+      cursor: pointer;
+      z-index: 1100;
+      transition: 0.2s;
+      border: none;
+      color: white;
+      font-size: 28px;
+    }
+    .qr-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-modal-content {
+      background: white;
+      border-radius: 48px;
+      max-width: 400px;
+      width: 90%;
+      padding: 30px 25px 40px;
+      text-align: center;
+      position: relative;
+    }
+    .qr-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #7e5a41;
+    }
+    #qrCodeContainer { display: flex; justify-content: center; margin: 20px 0; }
+    @media (max-width: 780px) {
+      .hero-title { font-size: 2.4rem; }
+      .hero-stats { flex-direction: column; gap: 12px; align-items: center; }
+      .navbar { flex-direction: column; gap: 12px; }
+      .contact-enhanced { flex-direction: column; }
+      .contact-image-modern { min-height: 280px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container navbar">
+    <div class="logo"><i class="fas fa-utensils"></i> The Food<span> Stop</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">HOME</a></li><li><a href="#about">ABOUT</a></li><li><a href="#menu">MENU</a></li>
+      <li><a href="#franchise">FRANCHISE</a></li><li><a href="#news">BLOGS</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <div class="header-actions">
+      <a href="tel:+918856898113" class="phone-link"><i class="fas fa-phone-alt"></i> +91 88568 98113</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="home">
+    <div class="container hero">
+      <div class="hero-content">
+        <div class="section-icon"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/924/924514.png" alt="food stop"></div></div>
+        <div class="hero-tag" style="color:#ffdbb5;">Flavors that bring people together</div>
+        <h1 class="hero-title">The Food Stop: Where Every Bite Feels Like Home</h1>
+        <p>From sizzling snacks to soulful beverages — experience India’s most loved cafe & restaurant chain.</p>
+        <div class="hero-stats">
+          <div><h3>2026</h3><span>First Outlet</span></div>
+          <div><h3>1</h3><span>Live Franchise</span></div>
+          <div><h3>1M+</h3><span>Smiling Guests</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="about"></div></div>
+      <h2 class="section-title reveal">The Food Stop Story</h2>
+      <div class="reveal" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); border-radius: 48px; padding: 40px;">
+        <div style="flex:1.2; color:white;"><h3 style="color:#ffefdb;">Where Passion Meets Flavor</h3><p style="margin: 25px 0;">The Food Stop started with a simple belief: great food creates unforgettable moments. Today we are one of India's fastest-growing QSR & cafe franchise networks.</p><a href="#franchise" class="btn-franchise">Start your journey →</a></div>
+        <div style="flex:1; background: white; padding: 30px; border-radius: 40px;"><ul style="list-style: none;"><li><i class="fas fa-check-circle" style="color:#c25e2c;"></i> Royalty Free Franchise</li><li><i class="fas fa-chart-line"></i> Proven business playbook</li><li><i class="fas fa-store"></i> 1 outlet & turnkey setup</li><li><i class="fas fa-mug-hot"></i> Global recipes, local love</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU section with carousels (2 items per view) -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="menu"></div></div>
+      <h2 class="section-title reveal">Irresistible Flavors</h2>
+      
+      <!-- Coffee & Beverages Carousel -->
+      <div class="sub-title reveal">☕ Coffee & Beverages</div>
+      <div class="menu-carousel reveal">
+        <div class="swiper coffeeSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400" alt="Espresso"><h4>Espresso</h4><div class="price">₹149</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400" alt="Americano"><h4>Americano</h4><div class="price">₹159</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400" alt="Mocha"><h4>Mocha</h4><div class="price">₹199</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400" alt="Cold Coffee"><h4>Cold Coffee</h4><div class="price">₹169</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?w=400" alt="Hot Chocolate"><h4>Hot Chocolate</h4><div class="price">₹179</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400" alt="Masala Tea"><h4>Masala Chai</h4><div class="price">₹99</div></div></div>
+          </div>
+          <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <!-- Cold Drinks Carousel -->
+      <div class="sub-title reveal">🥤 Cold Drinks & Refreshers</div>
+      <div class="menu-carousel reveal">
+        <div class="swiper coldSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400" alt="Mango Smoothie"><h4>Mango Smoothie</h4><div class="price">₹189</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400" alt="Chocolate Shake"><h4>Chocolate Shake</h4><div class="price">₹179</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400" alt="Mojito"><h4>Mojito</h4><div class="price">₹149</div></div></div>
+          </div>
+          <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <!-- Snacks Carousel -->
+      <div class="sub-title reveal">🥪 Snacks & Light Food</div>
+      <div class="menu-carousel reveal">
+        <div class="swiper snacksSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400" alt="Grilled Sandwich"><h4>Grilled Sandwich</h4><div class="price">₹169</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Burger"><h4>Veg Burger</h4><div class="price">₹189</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400" alt="Wrap"><h4>Veg Wrap</h4><div class="price">₹179</div></div></div>
+          </div>
+          <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <!-- Main Food Carousel -->
+      <div class="sub-title reveal">🍝 Main Food</div>
+      <div class="menu-carousel reveal">
+        <div class="swiper mainSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=400" alt="Pasta"><h4>Pasta</h4><div class="price">₹229</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" alt="Pizza"><h4>Pizza</h4><div class="price">₹299</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400" alt="Fried Rice"><h4>Fried Rice</h4><div class="price">₹209</div></div></div>
+          </div>
+          <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
+        </div>
+      </div>
+
+      <!-- Desserts Carousel -->
+      <div class="sub-title reveal">🍰 Desserts & Bakery</div>
+      <div class="menu-carousel reveal">
+        <div class="swiper dessertSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" alt="Cake"><h4>Chocolate Cake</h4><div class="price">₹149</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400" alt="Brownie"><h4>Walnut Brownie</h4><div class="price">₹129</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=400" alt="Cookies"><h4>Choco Chip Cookies</h4><div class="price">₹99</div></div></div>
+            <div class="swiper-slide"><div class="menu-card-carousel"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400" alt="Croissant"><h4>Butter Croissant</h4><div class="price">₹109</div></div></div>
+          </div>
+          <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Franchise Section -->
+  <section id="franchise">
+    <div class="container">
+      <div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="franchise"></div></div>
+      <h2 class="section-title reveal">Own a Food Stop – Be Your Own Boss!</h2>
+      <div class="franchise-modern reveal">
+        <div class="franchise-split">
+          <div class="franchise-left">
+            <h3><i class="fas fa-crown"></i> Turn Your Passion into Profit</h3>
+            <p>Join India's most loved cafe franchise with a proven business model, zero royalty, and end-to-end support. Your success is our mission.</p>
+            <div class="franchise-features">
+              <div class="feature-item"><i class="fas fa-check-circle"></i> Low Investment (₹10L+)</div>
+              <div class="feature-item"><i class="fas fa-chalkboard-user"></i> Complete Training</div>
+              <div class="feature-item"><i class="fas fa-gem"></i> Zero Royalty</div>
+              <div class="feature-item"><i class="fas fa-chart-line"></i> High ROI Potential</div>
+              <div class="feature-item"><i class="fas fa-bullhorn"></i> 360° Marketing</div>
+            </div>
+            <a href="tel:+918856898113" class="btn-franchise btn-franchise-large"><i class="fas fa-phone-alt"></i> Call Now: +91 88568 98113</a>
+          </div>
+          <div class="franchise-right">
+            <h4 style="color:#c25e2c; margin-bottom:20px;">Request a Callback</h4>
+            <input type="text" placeholder="Full Name">
+            <input type="tel" placeholder="Mobile Number">
+            <input type="email" placeholder="Email">
+            <select><option>Preferred City</option><option>Mumbai</option><option>Delhi</option><option>Bangalore</option><option>Hyderabad</option><option>Chennai</option></select>
+            <button class="btn-franchise btn-franchise-large">Submit Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news"><div class="container"><div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/2545/2545019.png" alt="blog"></div></div><h2 class="section-title reveal">Freshly Brewed Stories</h2><div class="news-grid"><div class="news-card reveal"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400"><h4>The Food Stop: India's Most Loved Food Chain</h4><p>How a small cafe became a nationwide sensation.</p><a href="#" style="color:#c25e2c;">Read more →</a></div><div class="news-card reveal"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400"><h4>Top 5 Instagrammable Spots</h4><p>Discover the most aesthetic corners.</p><a href="#" style="color:#c25e2c;">Read more →</a></div></div></div></section>
+
+  <section id="faq"><div class="container"><div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/709/709586.png" alt="faq"></div></div><h2 class="section-title reveal">Got Questions?</h2><div class="faq-grid"><div class="faq-item reveal"><h4><i class="fas fa-rupee-sign"></i> Investment?</h4><p>Starts from ₹10 lakhs. Low operational cost, high ROI.</p></div><div class="faq-item reveal"><h4><i class="fas fa-chalkboard-user"></i> Training?</h4><p>2 weeks intensive training + on-site support.</p></div><div class="faq-item reveal"><h4><i class="fas fa-gem"></i> Royalty-free?</h4><p>Absolutely! Zero royalty model.</p></div><div class="faq-item reveal"><h4><i class="fas fa-clock"></i> Setup time?</h4><p>30-45 days from agreement to opening.</p></div></div></div></section>
+
+  <section id="contact"><div class="container"><div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/3095/3095582.png" alt="contact"></div></div><h2 class="section-title reveal">Let’s Connect</h2><div class="contact-enhanced reveal"><div class="contact-info-modern"><h3><i class="fas fa-heart"></i> We’d love to hear from you!</h3><div class="contact-details"><p><i class="fas fa-phone-alt"></i> <strong>+91 88568 98113</strong></p><p><i class="fas fa-envelope"></i> hello@thefoodstop.in</p><p><i class="fas fa-map-marker-alt"></i> New Delhi, India</p></div><div class="social-links"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div><div class="contact-cta"><a href="#franchise" class="btn-franchise">Become a Partner</a><a href="tel:+918856898113" class="btn-outline">Call Now</a></div></div><div class="contact-image-modern"></div></div></div></section>
+</main>
+
+<footer><div class="container"><p>© 2025 The Food Stop — India's fastest-growing food & cafe franchise.</p><div style="margin-top:20px;"><a href="#" style="color:#d9c7b2; margin:0 10px;"><i class="fab fa-instagram"></i></a><a href="#" style="color:#d9c7b2; margin:0 10px;"><i class="fab fa-facebook-f"></i></a><a href="#" style="color:#d9c7b2; margin:0 10px;"><i class="fab fa-linkedin-in"></i></a></div></div></footer>
+
+<div class="qr-floating-btn" id="qrPopupBtn"><i class="fas fa-qrcode"></i></div>
+<div id="qrModal" class="qr-modal"><div class="qr-modal-content"><span class="qr-close" id="closeQrModal">&times;</span><h3><i class="fas fa-mobile-alt"></i> Scan & Go</h3><p>Scan this QR code with your phone to view The Food Stop website.</p><div id="qrCodeContainer"></div><div class="qr-note"><i class="fas fa-camera"></i> Open camera / QR scanner → tap the link</div></div></div>
+
+<script>
+  // Initialize Swiper carousels with 2 slides per view
+  const swiperConfig = {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    breakpoints: {
+      640: { slidesPerView: 2, spaceBetween: 30 }
+    }
+  };
+  new Swiper('.coffeeSwiper', swiperConfig);
+  new Swiper('.coldSwiper', swiperConfig);
+  new Swiper('.snacksSwiper', swiperConfig);
+  new Swiper('.mainSwiper', swiperConfig);
+  new Swiper('.dessertSwiper', swiperConfig);
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.2 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth navigation
+  document.querySelectorAll('.nav-links a, .btn-franchise[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== '#') { const target = document.querySelector(targetId); if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); } }
+    });
+  });
+
+  // QR Code
+  const qrBtn = document.getElementById('qrPopupBtn'), qrModal = document.getElementById('qrModal'), closeModal = document.getElementById('closeQrModal'), qrContainer = document.getElementById('qrCodeContainer');
+  function generateQRCode() { qrContainer.innerHTML = ''; try { new QRCode(qrContainer, { text: window.location.href, width: 220, height: 220, colorDark: "#c25e2c", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M }); } catch(e) { qrContainer.innerHTML = '<p>🔲 Scan this page</p>'; } }
+  qrBtn.addEventListener('click', () => { qrModal.style.display = 'flex'; generateQRCode(); });
+  closeModal.addEventListener('click', () => qrModal.style.display = 'none');
+  window.addEventListener('click', (e) => { if (e.target === qrModal) qrModal.style.display = 'none'; });
+</script>
+</body>
+</html>
