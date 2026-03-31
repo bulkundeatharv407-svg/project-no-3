@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>The Food Stop | Best Cafe & Restaurant Franchise India</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #FCF8F0;
+      color: #2D2A24;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4, .logo, .hero-title, .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Header */
+    header {
+      background: rgba(44, 38, 32, 0.92);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,245,225,0.15);
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #F7E5C2;
+    }
+    .logo i {
+      font-size: 2rem;
+      color: #C7A46B;
+    }
+    .logo span {
+      font-weight: 400;
+      color: #C7A46B;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #F7E5C2;
+      transition: 0.2s;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
+    .nav-links a:hover { color: #C7A46B; }
+    .phone-link {
+      background: #C7A46B;
+      color: #2D2A24;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+    .phone-link:hover {
+      background: #B48B4A;
+      transform: translateY(-2px);
+    }
+    .btn-primary {
+      background: #C7A46B;
+      color: #2D2A24;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.2s;
+    }
+    .btn-primary:hover {
+      background: #B48B4A;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #C7A46B;
+      color: #C7A46B;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      background: #C7A46B;
+      color: #2D2A24;
+    }
+
+    /* Sections with background images */
+    section {
+      position: relative;
+      padding: 100px 0;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    /* Overlay for all sections to ensure text readability */
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+    /* Different overlay strengths for sections with white cards */
+    #about::before, #menu::before, #franchise::before, #news::before, #faq::before, #contact::before {
+      background: rgba(0, 0, 0, 0.35);
+    }
+    #home::before {
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Background images */
+    #home {
+      background-image: url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1600&auto=format');
+    }
+    #about {
+      background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&auto=format');
+    }
+    #menu {
+      background-image: url('https://images.unsplash.com/photo-1507133750040-4c8f570a7114?w=1600&auto=format');
+    }
+    #franchise {
+      background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&auto=format');
+    }
+    #news {
+      background-image: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?w=1600&auto=format');
+    }
+    #faq {
+      background-image: url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=1600&auto=format');
+    }
+    #contact {
+      background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&auto=format');
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    .hero-tag {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #FFE2B5;
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: white;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,245,0.9);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 50px;
+    }
+    .hero-stats div {
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      padding: 16px 28px;
+      border-radius: 60px;
+      border: 1px solid rgba(255,215,170,0.3);
+    }
+    .hero-stats h3 {
+      font-size: 2rem;
+      color: #FFD7AA;
+      font-weight: 700;
+    }
+    .hero-stats span {
+      font-weight: 500;
+      color: #F7E5C2;
+    }
+
+    .section-icon {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .rotating-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,245,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+    .rotating-icon img { width: 48px; opacity: 0.8; }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      color: white;
+      position: relative;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 2px;
+      background: #FFD7AA;
+      margin: 20px auto 0;
+    }
+    .sub-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin: 50px 0 30px;
+      color: white;
+      font-weight: 500;
+      font-family: 'Cormorant Garamond', serif;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    /* About card */
+    .about-card {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: center;
+      background: rgba(255, 255, 245, 0.95);
+      backdrop-filter: blur(4px);
+      border-radius: 48px;
+      padding: 48px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+    .about-left {
+      flex: 1.2;
+    }
+    .about-left h3 {
+      font-size: 2rem;
+      color: #C7A46B;
+      margin-bottom: 20px;
+    }
+    .about-left p {
+      color: #2D2A24;
+    }
+    .about-right {
+      flex: 1;
+      background: white;
+      padding: 32px;
+      border-radius: 32px;
+    }
+    .about-right ul {
+      list-style: none;
+    }
+    .about-right li {
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #2D2A24;
+    }
+    .about-right li i {
+      color: #C7A46B;
+      width: 24px;
+    }
+
+    /* Franchise Section */
+    .franchise-card {
+      background: rgba(255, 255, 245, 0.95);
+      backdrop-filter: blur(4px);
+      border-radius: 48px;
+      padding: 48px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+    .franchise-split {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: center;
+    }
+    .franchise-left h3 {
+      font-size: 2rem;
+      color: #C7A46B;
+      margin-bottom: 20px;
+    }
+    .franchise-left p {
+      color: #2D2A24;
+    }
+    .feature-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      padding: 8px 20px;
+      border-radius: 40px;
+      margin: 6px;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .franchise-right {
+      background: white;
+      padding: 40px;
+      border-radius: 32px;
+    }
+    .franchise-right input, .franchise-right select {
+      width: 100%;
+      padding: 14px 18px;
+      margin: 12px 0;
+      border-radius: 60px;
+      border: 1px solid #E2D6C8;
+      background: white;
+      font-family: inherit;
+    }
+    .franchise-right input:focus, .franchise-right select:focus {
+      outline: none;
+      border-color: #C7A46B;
+    }
+
+    /* Menu Grid - All items visible */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+      margin-top: 20px;
+    }
+    .menu-card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      text-align: center;
+    }
+    .menu-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.15);
+    }
+    .menu-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .menu-card h4 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.3rem;
+      color: #2D2A24;
+    }
+    .menu-card .price {
+      font-weight: 700;
+      color: #C7A46B;
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+    }
+
+    /* News & FAQ */
+    .news-grid, .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .news-card, .faq-card {
+      background: white;
+      border-radius: 32px;
+      padding: 24px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transition: 0.2s;
+    }
+    .news-card:hover, .faq-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .news-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 24px;
+      margin-bottom: 16px;
+    }
+    .faq-card h4 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #C7A46B;
+      margin-bottom: 12px;
+    }
+
+    /* Contact */
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 245, 0.95);
+      backdrop-filter: blur(4px);
+      border-radius: 48px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+    }
+    .contact-info {
+      flex: 1;
+      padding: 48px;
+    }
+    .contact-info h3 {
+      font-size: 2rem;
+      color: #C7A46B;
+      margin-bottom: 24px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .contact-detail i {
+      width: 44px;
+      height: 44px;
+      background: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #C7A46B;
+    }
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      background: white;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #C7A46B;
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      background: #C7A46B;
+      color: white;
+    }
+    .contact-image {
+      flex: 1;
+      background: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&auto=format') center/cover;
+      min-height: 400px;
+    }
+    footer {
+      background: #2D2A24;
+      color: #CBBFAE;
+      padding: 48px 0;
+      text-align: center;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .qr-floating-btn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 60px;
+      height: 60px;
+      background: #C7A46B;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      cursor: pointer;
+      z-index: 1100;
+      transition: 0.2s;
+      border: none;
+      color: #2D2A24;
+      font-size: 26px;
+    }
+    .qr-floating-btn:hover {
+      transform: scale(1.05);
+      background: #B48B4A;
+    }
+    .qr-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-modal-content {
+      background: white;
+      border-radius: 48px;
+      max-width: 400px;
+      width: 90%;
+      padding: 32px 24px 40px;
+      text-align: center;
+      position: relative;
+    }
+    .qr-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #7e5a41;
+    }
+    #qrCodeContainer {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    @media (max-width: 780px) {
+      .hero-title { font-size: 2.5rem; }
+      .hero-stats { flex-direction: column; gap: 12px; align-items: center; }
+      .navbar { flex-direction: column; }
+      .section-title { font-size: 2.2rem; }
+      .franchise-split { flex-direction: column; }
+      .contact-info { padding: 32px; }
+      .contact-image { min-height: 250px; }
+      section { background-attachment: scroll; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container navbar">
+    <div class="logo"><i class="fas fa-mug-hot"></i> The Food<span> Stop</span></div>
+    <ul class="nav-links">
+      <li><a href="#home">HOME</a></li><li><a href="#about">ABOUT</a></li><li><a href="#menu">MENU</a></li>
+      <li><a href="#franchise">FRANCHISE</a></li><li><a href="#news">BLOGS</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <div class="header-actions">
+      <a href="tel:+918856898113" class="phone-link"><i class="fas fa-phone-alt"></i> +91 88568 98113</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="home">
+    <div class="container hero">
+      <div class="section-icon"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/924/924514.png" alt="food stop"></div></div>
+      <div class="hero-tag">EST. 2026</div>
+      <h1 class="hero-title">The Food Stop:<br>Where Every Bite Feels Like Home</h1>
+      <p>From sizzling snacks to soulful beverages — experience India’s most loved cafe & restaurant chain. Join the community of happy foodies and aspiring entrepreneurs.</p>
+      <div class="hero-stats">
+        <div><h3>2026</h3><span>First Outlet</span></div>
+        <div><h3>1</h3><span>Live Franchise</span></div>
+        <div><h3>1M+</h3><span>Smiling Guests</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="about"></div></div>
+      <h2 class="section-title reveal">The Food Stop Story</h2>
+      <div class="about-card reveal">
+        <div class="about-left">
+          <h3>Where Passion Meets Flavor</h3>
+          <p style="color:#2D2A24; line-height:1.6;">The Food Stop started with a simple belief: great food creates unforgettable moments. Today we are one of India's fastest-growing QSR & cafe franchise networks, known for consistent taste, warm ambiance, and franchise-friendly model.</p>
+          <a href="#franchise" class="btn-primary" style="margin-top: 28px; display: inline-block;">Start your journey →</a>
+        </div>
+        <div class="about-right">
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Royalty Free Franchise</li>
+            <li><i class="fas fa-chart-line"></i> Proven business playbook</li>
+            <li><i class="fas fa-store"></i> 1 outlet & turnkey setup</li>
+            <li><i class="fas fa-mug-hot"></i> Global recipes, local love</li>
+            <li><i class="fas fa-heart"></i> 60+ signature items</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU section - Full grid showing all items -->
+  <section id="menu">
+    <div class="container">
+      <div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="menu"></div></div>
+      <h2 class="section-title reveal">Irresistible Flavors</h2>
+      
+      <div class="sub-title reveal">☕ Coffee & Beverages</div>
+      <div class="menu-grid reveal">
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=400" alt="Espresso"><h4>Espresso</h4><div class="price">₹149</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400" alt="Americano"><h4>Americano</h4><div class="price">₹159</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400" alt="Mocha"><h4>Mocha</h4><div class="price">₹199</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400" alt="Cold Coffee"><h4>Cold Coffee</h4><div class="price">₹169</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?w=400" alt="Hot Chocolate"><h4>Hot Chocolate</h4><div class="price">₹179</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400" alt="Masala Tea"><h4>Masala Chai</h4><div class="price">₹99</div></div>
+      </div>
+
+      <div class="sub-title reveal">🥤 Cold Drinks & Refreshers</div>
+      <div class="menu-grid reveal">
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=400" alt="Mango Smoothie"><h4>Mango Smoothie</h4><div class="price">₹189</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=400" alt="Chocolate Shake"><h4>Chocolate Shake</h4><div class="price">₹179</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400" alt="Mojito"><h4>Mojito</h4><div class="price">₹149</div></div>
+      </div>
+
+      <div class="sub-title reveal">🥪 Snacks & Light Food</div>
+      <div class="menu-grid reveal">
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400" alt="Grilled Sandwich"><h4>Grilled Sandwich</h4><div class="price">₹169</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Burger"><h4>Veg Burger</h4><div class="price">₹189</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400" alt="Wrap"><h4>Veg Wrap</h4><div class="price">₹179</div></div>
+      </div>
+
+      <div class="sub-title reveal">🍝 Main Food</div>
+      <div class="menu-grid reveal">
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=400" alt="Pasta"><h4>Pasta</h4><div class="price">₹229</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" alt="Pizza"><h4>Pizza</h4><div class="price">₹299</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400" alt="Fried Rice"><h4>Fried Rice</h4><div class="price">₹209</div></div>
+      </div>
+
+      <div class="sub-title reveal">🍰 Desserts & Bakery</div>
+      <div class="menu-grid reveal">
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400" alt="Cake"><h4>Chocolate Cake</h4><div class="price">₹149</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=400" alt="Brownie"><h4>Walnut Brownie</h4><div class="price">₹129</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=400" alt="Cookies"><h4>Choco Chip Cookies</h4><div class="price">₹99</div></div>
+        <div class="menu-card"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400" alt="Croissant"><h4>Butter Croissant</h4><div class="price">₹109</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="franchise">
+    <div class="container">
+      <div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="franchise"></div></div>
+      <h2 class="section-title reveal">Own a Food Stop – Be Your Own Boss!</h2>
+      <div class="franchise-card reveal">
+        <div class="franchise-split">
+          <div class="franchise-left">
+            <h3>Turn Your Passion into Profit</h3>
+            <p style="color:#2D2A24;">Join India's most loved cafe franchise with a proven business model, zero royalty, and end-to-end support. Your success is our mission.</p>
+            <div style="margin: 28px 0;">
+              <span class="feature-badge"><i class="fas fa-check-circle"></i> Low Investment (₹10L+)</span>
+              <span class="feature-badge"><i class="fas fa-chalkboard-user"></i> Complete Training</span>
+              <span class="feature-badge"><i class="fas fa-gem"></i> Zero Royalty</span>
+              <span class="feature-badge"><i class="fas fa-chart-line"></i> High ROI Potential</span>
+              <span class="feature-badge"><i class="fas fa-bullhorn"></i> 360° Marketing</span>
+            </div>
+            <a href="tel:+918856898113" class="btn-primary"><i class="fas fa-phone-alt"></i> Call Now: +91 88568 98113</a>
+          </div>
+          <div class="franchise-right">
+            <h4 style="color:#C7A46B; margin-bottom: 20px;">Request a Callback</h4>
+            <input type="text" placeholder="Full Name">
+            <input type="tel" placeholder="Mobile Number">
+            <input type="email" placeholder="Email">
+            <select><option>Preferred City</option><option>Mumbai</option><option>Delhi</option><option>Bangalore</option><option>Hyderabad</option><option>Chennai</option></select>
+            <button class="btn-primary" style="width:100%; margin-top:12px;">Submit Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <div class="container">
+      <div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/2545/2545019.png" alt="blog"></div></div>
+      <h2 class="section-title reveal">Freshly Brewed Stories</h2>
+      <div class="news-grid">
+        <div class="news-card reveal"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400"><h4>The Food Stop: India's Most Loved Food Chain</h4><p>How a small cafe became a nationwide sensation with authentic flavors.</p><a href="#" style="color:#C7A46B; font-weight:500;">Read more →</a></div>
+        <div class="news-card reveal"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=400"><h4>Top 5 Instagrammable Spots</h4><p>Discover the most aesthetic corners to capture your food moments.</p><a href="#" style="color:#C7A46B; font-weight:500;">Read more →</a></div>
+        <div class="news-card reveal"><img src="https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?w=400"><h4>Behind the Scenes: Our Secret Sauces</h4><p>We reveal what makes our dishes irresistible.</p><a href="#" style="color:#C7A46B; font-weight:500;">Read more →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/709/709586.png" alt="faq"></div></div>
+      <h2 class="section-title reveal">Got Questions? We've Got Answers.</h2>
+      <div class="faq-grid">
+        <div class="faq-card reveal"><h4><i class="fas fa-rupee-sign"></i> Investment?</h4><p>Starts from ₹10 lakhs. Low operational cost, high ROI potential.</p></div>
+        <div class="faq-card reveal"><h4><i class="fas fa-chalkboard-user"></i> Training?</h4><p>2 weeks intensive training + on-site support during launch and beyond.</p></div>
+        <div class="faq-card reveal"><h4><i class="fas fa-gem"></i> Royalty-free?</h4><p>Absolutely! The Food Stop operates on a 100% royalty-free model.</p></div>
+        <div class="faq-card reveal"><h4><i class="fas fa-clock"></i> Setup time?</h4><p>Typically 30-45 days from agreement to grand opening.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-icon reveal"><div class="rotating-icon"><img src="https://cdn-icons-png.flaticon.com/512/3095/3095582.png" alt="contact"></div></div>
+      <h2 class="section-title reveal">Let’s Connect</h2>
+      <div class="contact-wrapper reveal">
+        <div class="contact-info">
+          <h3>We'd love to hear from you</h3>
+          <div class="contact-detail"><i class="fas fa-phone-alt"></i> <strong>+91 88568 98113</strong> (Franchise Hotline)</div>
+          <div class="contact-detail"><i class="fas fa-envelope"></i> <strong>hello@thefoodstop.in</strong></div>
+          <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <strong>Corporate Office:</strong> New Delhi, India</div>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+          <div class="contact-cta" style="display:flex; gap:16px; flex-wrap:wrap;">
+            <a href="#franchise" class="btn-primary">Become a Partner</a>
+            <a href="tel:+918856898113" class="btn-outline">Call Now</a>
+          </div>
+        </div>
+        <div class="contact-image"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2025 The Food Stop — India's fastest-growing food & cafe franchise. All rights reserved.</p>
+    <div style="margin-top: 20px;">
+      <a href="#" style="color:#CBBFAE; margin:0 12px;"><i class="fab fa-instagram"></i></a>
+      <a href="#" style="color:#CBBFAE; margin:0 12px;"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" style="color:#CBBFAE; margin:0 12px;"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</footer>
+
+<div class="qr-floating-btn" id="qrPopupBtn"><i class="fas fa-qrcode"></i></div>
+<div id="qrModal" class="qr-modal">
+  <div class="qr-modal-content">
+    <span class="qr-close" id="closeQrModal">&times;</span>
+    <h3><i class="fas fa-mobile-alt"></i> Scan & Go</h3>
+    <p>Scan this QR code with your phone to instantly view The Food Stop website on mobile.</p>
+    <div id="qrCodeContainer"></div>
+    <div style="margin-top:16px; font-size:0.8rem; background:#FCF8F0; padding:8px 16px; border-radius:40px;"><i class="fas fa-camera"></i> Open camera / QR scanner → tap the link</div>
+  </div>
+</div>
+
+<script>
+  // Scroll reveal animation
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth navigation
+  document.querySelectorAll('.nav-links a, .btn-primary[href^="#"], .btn-outline[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  // QR Code Modal
+  const qrBtn = document.getElementById('qrPopupBtn');
+  const qrModal = document.getElementById('qrModal');
+  const closeModal = document.getElementById('closeQrModal');
+  const qrContainer = document.getElementById('qrCodeContainer');
+  
+  function generateQRCode() {
+    qrContainer.innerHTML = '';
+    try {
+      new QRCode(qrContainer, {
+        text: window.location.href,
+        width: 220,
+        height: 220,
+        colorDark: "#C7A46B",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.M
+      });
+    } catch(e) {
+      qrContainer.innerHTML = '<p>🔲 Scan this page</p>';
+    }
+  }
+  
+  qrBtn.addEventListener('click', () => {
+    qrModal.style.display = 'flex';
+    generateQRCode();
+  });
+  closeModal.addEventListener('click', () => qrModal.style.display = 'none');
+  window.addEventListener('click', (e) => {
+    if (e.target === qrModal) qrModal.style.display = 'none';
+  });
+</script>
+</body>
+</html>
